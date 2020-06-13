@@ -31,7 +31,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
 $app->addRoutingMiddleware();
 
 $app->get('/countries/{country_name}', function (Request $request, Response $response, $args) use ($pdo): Response {
-  $req = $pdo->prepare("SELECT country, title FROM countries WHERE country=:name");
+  $req = $pdo->prepare("SELECT * FROM countries WHERE country=:name");
   $req->bindValue(":name", $args["country_name"]);
   $req->execute();
   $countries = $req->fetch(PDO::FETCH_ASSOC);
@@ -41,9 +41,9 @@ $app->get('/countries/{country_name}', function (Request $request, Response $res
 });
 
 $app->get('/countries', function (Request $request, Response $response, $args) use ($pdo) {
-  $req = $pdo->prepare("SELECT country,title,text,image,video FROM countries ");
+  $req = $pdo->prepare("SELECT * FROM countries ");
   $req->execute();
-  $countries = print_r($req->fetchAll(PDO::FETCH_CLASS));
+  $countries = $req->fetchAll(PDO::FETCH_CLASS);
   $payload = json_encode($countries);
   $response->getBody()->write($payload);
   return $response->withHeader('Content-Type', 'application/json');
@@ -52,7 +52,7 @@ $app->get('/countries', function (Request $request, Response $response, $args) u
 $app->get('/definition', function (Request $request, Response $response, $args) use ($pdo) {
   $req = $pdo->prepare("SELECT * FROM definition");
   $req->execute();
-  $definition = print_r($req->fetchAll(PDO::FETCH_CLASS));
+  $definition = $req->fetchAll(PDO::FETCH_CLASS);
   $payload = json_encode($definition);
   $response->getBody()->write($payload);
   return $response->withHeader('Content-Type', 'application/json');
