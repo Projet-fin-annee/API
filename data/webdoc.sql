@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 16, 2020 at 08:38 AM
+-- Generation Time: Jun 16, 2020 at 09:02 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -19,38 +19,16 @@ SET time_zone
 -- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Table structure for table `definition`
 --
 
-CREATE TABLE `countries`
+CREATE TABLE `definition`
 (
   `id` int
-(100) NOT NULL,
-  `country` varchar
-(15) NOT NULL,
-  `htag` varchar
+(255) NOT NULL,
+  `word` varchar
 (100) DEFAULT NULL,
-  `victimsName` text,
-  `citationOne` varchar
-(255) DEFAULT NULL,
-  `title` varchar
-(150) DEFAULT NULL,
-  `citationTwo` text,
-  `imageOne` varchar
-(1000) DEFAULT NULL,
-  `textIntro` text,
-  `titleSpeech` text,
-  `video` varchar
-(1000) DEFAULT NULL,
-  `citationSpeech` text,
-  `person` varchar
-(255) DEFAULT NULL,
-  `imageTwo` varchar
-(1000) DEFAULT NULL,
-  `textOne` text,
-  `imageThree` varchar
-(1000) DEFAULT NULL,
-  `textTwo` text
+  `text` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -58,25 +36,19 @@ CREATE TABLE `countries`
 --
 
 --
--- Indexes for table `countries`
+-- Indexes for table `definition`
 --
-ALTER TABLE `countries`
+ALTER TABLE `definition`
 ADD PRIMARY KEY
-(`id`),
-ADD UNIQUE KEY `id`
-(`id`),
-ADD UNIQUE KEY `country`
-(`country`),
-ADD UNIQUE KEY `title`
-(`title`);
+(`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `countries`
+-- AUTO_INCREMENT for table `definition`
 --
-ALTER TABLE `countries`
+ALTER TABLE `definition`
   MODIFY `id` int
-(100) NOT NULL AUTO_INCREMENT;
+(255) NOT NULL AUTO_INCREMENT;
