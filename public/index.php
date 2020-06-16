@@ -7,7 +7,7 @@ use Slim\Routing\RouteContext;
 use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
-
+echo "ff";
 $pdo = new PDO('mysql:host=localhost; dbname=webdoc;charset=utf8', 'root2');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $app = AppFactory::create();
