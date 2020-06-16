@@ -8,7 +8,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
 // $pdo = new PDO('mysql:host=localhost; dbname=webdoc;charset=utf8', 'root2');
-$pdo = new PDO('mysql:host=custom-4c36.mysql.eu2.frbit.com; dbname=custom-4c36;charset=utf8', 'custom-4c36', 'hn6zWFtn.lE_=k9Z83gtE67O');
+$pdo = new PDO('mysql:host=custom-x5lq.mysql.eu2.frbit.com; dbname=custom-x5lq;charset=utf8', 'custom-x5lq', 'I8SIS0.rKUSCWdRH8kQ7HWCq');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
