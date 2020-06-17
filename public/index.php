@@ -22,13 +22,13 @@ $app->addBodyParsingMiddleware();
 // This middleware will append the response header Access-Control-Allow-Methods with all allowed methods
 
 $app->add(function (Request $request, RequestHandlerInterface $handler): Response {
-  $http_origin = 'https://canwebreathenow.netlify.app' || 'http://localhost:8080/';
+
   $routeContext = RouteContext::fromRequest($request);
   $routingResults = $routeContext->getRoutingResults();
   $methods = $routingResults->getAllowedMethods();
   $requestHeaders = $request->getHeaderLine('Access-Control-Request-Headers');
   $response = $handler->handle($request);
-  $response = $response->withHeader('Access-Control-Allow-Origin', $http_origin);
+  $response = $response->withHeader('Access-Control-Allow-Origin', '*');
   $response = $response->withHeader('Access-Control-Allow-Methods', implode(',', $methods));
   $response = $response->withHeader('Access-Control-Allow-Headers', $requestHeaders);
   // Optional: Allow Ajax CORS requests with Authorization header
