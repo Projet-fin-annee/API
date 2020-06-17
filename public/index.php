@@ -26,7 +26,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
   $methods = $routingResults->getAllowedMethods();
   $requestHeaders = $request->getHeaderLine('Access-Control-Request-Headers');
   $response = $handler->handle($request);
-  $response = $response->withHeader('Access-Control-Allow-Origin', '*');
+  $response = $response->withHeader('Access-Control-Allow-Origin', 'https://canwebreathenow.netlify.app');
   $response = $response->withHeader('Access-Control-Allow-Methods', implode(',', $methods));
   $response = $response->withHeader('Access-Control-Allow-Headers', $requestHeaders);
   // Optional: Allow Ajax CORS requests with Authorization header
