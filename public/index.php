@@ -20,8 +20,9 @@ $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
 
 // This middleware will append the response header Access-Control-Allow-Methods with all allowed methods
-$http_origin = 'https://canwebreathenow.netlify.app' || 'http://localhost:8080/';
+
 $app->add(function (Request $request, RequestHandlerInterface $handler): Response {
+  $http_origin = 'https://canwebreathenow.netlify.app' || 'http://localhost:8080/';
   $routeContext = RouteContext::fromRequest($request);
   $routingResults = $routeContext->getRoutingResults();
   $methods = $routingResults->getAllowedMethods();
