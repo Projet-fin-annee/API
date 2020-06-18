@@ -10,10 +10,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 require __DIR__ . '/../vendor/autoload.php';
 
 // bdd connexion local
-//$pdo = new PDO('mysql:host=localhost; dbname=webdoc;charset=utf8', 'root2');
+$pdo = new PDO('mysql:host=localhost; dbname=webdoc;charset=utf8', 'root2');
 
 // bdd connexion online
-$pdo = new PDO('mysql:host=custom-x5lq.mysql.eu2.frbit.com; dbname=custom-x5lq;charset=utf8', 'custom-x5lq', 'I8SIS0.rKUSCWdRH8kQ7HWCq');
+// $pdo = new PDO('mysql:host=custom-x5lq.mysql.eu2.frbit.com; dbname=custom-x5lq;charset=utf8', 'custom-x5lq', 'I8SIS0.rKUSCWdRH8kQ7HWCq');
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $app = AppFactory::create();
@@ -23,18 +23,23 @@ $app->addBodyParsingMiddleware();
 
 $app->add(function (Request $request, RequestHandlerInterface $handler): Response {
 
+
   $routeContext = RouteContext::fromRequest($request);
   $routingResults = $routeContext->getRoutingResults();
   $methods = $routingResults->getAllowedMethods();
   $requestHeaders = $request->getHeaderLine('Access-Control-Request-Headers');
   $response = $handler->handle($request);
+  //if in online 
+  // $response = $response->withHeader('Access-Control-Allow-Origin','https://canwebreathenow.netlify.app'); 
+  //if in production
   $response = $response->withHeader('Access-Control-Allow-Origin', '*');
   $response = $response->withHeader('Access-Control-Allow-Methods', implode(',', $methods));
   $response = $response->withHeader('Access-Control-Allow-Headers', $requestHeaders);
   // Optional: Allow Ajax CORS requests with Authorization header
-  $response = $response->withHeader('Access-Control-Allow-Credentials', 'true');
+  // $response = $response->withHeader('Access-Control-Allow-Credentials', 'true');
   return $response;
 });
+
 
 $app->addRoutingMiddleware();
 
