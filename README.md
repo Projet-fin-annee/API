@@ -1,5 +1,6 @@
 # API
 
+<<<<<<< HEAD
 ## Explication
 
 J’ai connecté l’api en ligne à la même base de donné que celle du back office en ligne. 
@@ -8,6 +9,8 @@ J’ai aussi pour la sécurité autorisé la récupération des données dans l�
 
 Grâce à fortrabbit j’ai pu mettre mon api en ligne, voici le lien : http://custom-4c36.frb.io
 
+=======
+>>>>>>> 4ae087ccd8defc03de19bb5e9b4d35a17adb3ab1
 ## Installation
 
 1 - Clôner ce repository 
