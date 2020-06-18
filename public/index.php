@@ -10,10 +10,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 require __DIR__ . '/../vendor/autoload.php';
 
 // bdd connexion local
-$pdo = new PDO('mysql:host=localhost; dbname=webdoc;charset=utf8', 'root2');
+// $pdo = new PDO('mysql:host=localhost; dbname=webdoc;charset=utf8', 'root2');
 
 // bdd connexion online
-// $pdo = new PDO('mysql:host=custom-x5lq.mysql.eu2.frbit.com; dbname=custom-x5lq;charset=utf8', 'custom-x5lq', 'I8SIS0.rKUSCWdRH8kQ7HWCq');
+$pdo = new PDO('mysql:host=custom-x5lq.mysql.eu2.frbit.com; dbname=custom-x5lq;charset=utf8', 'custom-x5lq', 'I8SIS0.rKUSCWdRH8kQ7HWCq');
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $app = AppFactory::create();
