@@ -30,7 +30,7 @@ $app->add(function (Request $request, RequestHandlerInterface $handler): Respons
   $requestHeaders = $request->getHeaderLine('Access-Control-Request-Headers');
   $response = $handler->handle($request);
   //if in online 
-  // $response = $response->withHeader('Access-Control-Allow-Origin','https://canwebreathenow.netlify.app'); 
+  $response = $response->withHeader('Access-Control-Allow-Origin', 'https://canwebreathenow.netlify.app');
   //if in production
   $response = $response->withHeader('Access-Control-Allow-Origin', '*');
   $response = $response->withHeader('Access-Control-Allow-Methods', implode(',', $methods));
